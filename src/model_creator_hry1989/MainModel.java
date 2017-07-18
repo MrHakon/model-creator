@@ -63,6 +63,7 @@ public class MainModel {
 			filesaver();
 		}
 		
+		dataset.close();
 		scanner.close();
 	}
 
