@@ -1,7 +1,11 @@
 # model-creator
-Small program that can be used to create a semantic model 
+Small program that can be used to create a semantic model
 
-Planned updates:
-  - Make the user input more streamlined: either write a whole triple in one sentence, or store a resource in memory until all properties are completed. 
+Updates:
+- Made changes to the input: the whole triple is written in one line
+
+ 
+
+Planned updates: 
   - Find a way to work with the vocabularies that are implemented in Jena
   - Add proper support for prefixes

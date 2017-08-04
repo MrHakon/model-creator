@@ -32,43 +32,41 @@ public class MainModel {
 		Model model = dataset.getDefaultModel();
 
 		boolean donebuilding = false;
-		
+
 		System.out.println("If you want to exit, you can write 'exitnow' after finishing a triple\n");
 
 		while (!donebuilding) {
-			System.out.println("Name your resource:");
-			mRes = scanner.nextLine();
-			if (mRes.toLowerCase().equals("exitnow")) {
-				break;
+			System.out.println("Write your triple on the form: 'subject predicate object' here: \n");
+			String userInput = scanner.nextLine();
+
+			if (userInput.toLowerCase().equals("exitnow")) {
+				donebuilding = true;
 			}
+			String[] splitted = userInput.split(" ");
+			if (splitted.length > 2) {
+				Resource res = model.createResource(iriBase + splitted[0]);
+				Property prop = model.createProperty(iriBase + splitted[1]);
+				res.addProperty(prop, splitted[2]);
 
-			System.out.println("Name your property:");
-			mProp = scanner.nextLine();
-
-			System.out.println("Enter the object value (currently just strings):");
-			mObj = scanner.nextLine();
-
-			// inserts the information into the model
-			Resource res = model.createResource(iriBase + mRes);
-			Property prop = model.createProperty(iriBase + mProp);
-			res.addProperty(prop, mObj);
+			}
 		}
-		
+
 		System.out.println("Your model: \n");
 		model.write(System.out, "TURTLE");
 		System.out.println("Would you like to save it as a file? (Y/N)");
 		String save = scanner.nextLine().toLowerCase();
-		
+
 		if (save.equals("y")) {
 			filesaver();
 		}
-		
+
 		dataset.close();
 		scanner.close();
 	}
 
 	public static void filesaver() {
 		System.out.println("Not implemented yet!");
+		
 	}
 
 }
